@@ -1,13 +1,19 @@
 import { Button, message } from 'antd'
-import './App.css'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+import Comp1 from './comp1'
+import Comp2 from './comp2'
 
 function App() {
-  function showMsg() {
-    message.info('This is normal message')
-  }
   return (
     <div className="App">
-      <Button type="primary" onClick={showMsg}>tomato</Button>
+      <ul>
+        <li><Link to="/comp1">comp1</Link></li>
+        <li><Link to="/comp2">comp2</Link></li>
+      </ul>
+      <BrowserRouter>
+        <Route path="comp1" component={Comp1}></Route>
+        <Route path="comp2" component={Comp2}></Route>
+      </BrowserRouter>
     </div>
   )
 }
