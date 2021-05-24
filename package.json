@@ -46,7 +46,11 @@
     "circular-dependency-plugin": "^5.2.2",
     "compression-webpack-plugin": "6.1.1",
     "craco-less": "^1.17.1",
+    "css-loader": "^5.2.5",
+    "less": "^4.1.1",
+    "less-loader": "7.3.0",
     "simple-progress-webpack-plugin": "^2.0.0",
+    "style-loader": "^2.0.0",
     "webpack-build-notifier": "^2.2.1",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpackbar": "^5.0.0-3"

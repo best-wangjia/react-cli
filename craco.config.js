@@ -137,6 +137,11 @@ module.exports = {
     {
       plugin: CracoLessPlugin,
       options: {
+        cssLoaderOptions: {
+          modules: {
+            localIdentName: '[local]_[hash:base64:5]'
+          }
+        },
         lessLoaderOptions: {
           lessOptions: {
             modifyVars: {
@@ -144,6 +149,32 @@ module.exports = {
             },
             javascriptEnabled: true
           }
+        },
+        modifyLessRule: (lessRule, _context) => {
+          lessRule.test = /\.less$/
+          lessRule.use = [{
+            loader: 'style-loader'
+          }, {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[local]_[hash:base64:5]'
+              }
+            }
+          }, {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+                modifyVars: {
+                  'primary-color': '#039be5'
+                }
+              }
+            }
+          }]
+          // lessRule.exclude = /node_modules/
+          // lessRule.include = resolve('src')
+          return lessRule
         }
       }
     },
