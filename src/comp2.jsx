@@ -1,5 +1,5 @@
-import { Button } from 'antd'
 import React, { Component } from 'react'
+import { Button } from 'antd'
 import styles from './comp2.module.less'
 
 export default class Comp2 extends Component {

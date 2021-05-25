@@ -1,6 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
-const { when, whenDev, whenProd } = require('@craco/craco')
+const { whenDev, whenProd } = require('@craco/craco')
 const CracoLessPlugin = require('craco-less')
 const CircularDependencyPlugin = require('circular-dependency-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
@@ -11,7 +11,7 @@ const WebpackBar = require('webpackbar')
 const { getThemeVariables } = require('antd/dist/theme')
 
 const resolve = dir => path.join(__dirname, dir)
-const isDev = process.env.NODE_ENV === 'developer'
+const isDev = process.env.NODE_ENV === 'development'
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
@@ -43,7 +43,7 @@ module.exports = {
             allowAsyncCycles: false,
             cwd: process.cwd()
           }),
-          new webpack.HotModuleReplacementPlugin()
+          // new webpack.HotModuleReplacementPlugin()
         ], []
       ),
       ...whenProd(
@@ -137,53 +137,52 @@ module.exports = {
     {
       plugin: CracoLessPlugin,
       options: {
-        cssLoaderOptions: {
-          modules: {
-            localIdentName: '[local]_[hash:base64:5]'
-          }
-        },
         lessLoaderOptions: {
           lessOptions: {
             modifyVars: {
-              'primary-color': '#039be5'
+              // ...getThemeVariables({
+              //   dark: true
+              // }),
+              // ...{
+              //   'primary-color': '#ff4444'
+              // }
             },
-            javascriptEnabled: true
-          }
+            javascriptEnabled: true,
+          },
         },
-        modifyLessRule: (lessRule, _context) => {
-          lessRule.test = /\.less$/
-          lessRule.use = [{
-            loader: 'style-loader'
-          }, {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[local]_[hash:base64:5]'
-              }
-            }
-          }, {
-            loader: 'less-loader',
-            options: {
-              lessOptions: {
-                javascriptEnabled: true,
-                modifyVars: {
-                  'primary-color': '#039be5'
-                }
-              }
-            }
-          }]
-          // lessRule.exclude = /node_modules/
-          // lessRule.include = resolve('src')
-          return lessRule
+        modifyLessRule: function (lessRule, _context) {
+          lessRule.test = /\.less$/;
+          lessRule.exclude = /\.module\.less$/;
+          return lessRule;
         }
       }
-    },
+    }, {
+      plugin: CracoLessPlugin,
+      options: {
+        lessLoaderOptions: {
+          lessOptions: {
+            modifyVars: {},
+            javascriptEnabled: true,
+          },
+        },
+        modifyLessRule: function (lessRule, context) {
+          lessRule.test = /\.module\.(less)$/
+          lessRule.exclude = undefined
+          return lessRule
+        },
+        cssLoaderOptions: {
+          modules: {
+            localIdentName: '[local]_[hash:base64:5]',
+          },
+        },
+      }
+    }
   ],
   devServer: {
     port: 3000,
     proxy: {
       '/api': {
-        target: '',
+        target: 'https://api.exchangerate-api.com/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
