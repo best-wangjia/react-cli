@@ -1,4 +1,4 @@
-# react-base-template
+# craco-react
 
 使用craco配置的react快速开发模版
 

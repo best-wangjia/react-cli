@@ -17,7 +17,7 @@ const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   webpack: {
     alias: {
-      '@': resolve('src/api'),
+      'api': resolve('src/api'),
       'assets': resolve('src/assets'),
       'common': resolve('src/common'),
       'components': resolve('src/components'),
