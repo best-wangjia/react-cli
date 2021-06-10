@@ -1,13 +1,16 @@
+import { REHYDRATE } from 'redux-persist/lib/constants'
 import { ADD_ITEM, DEL_ITEM, GET_INFO } from './actionTypes'
 
 let defaultStore = {
   list: [1, 2, 3],
-  info: null
+  info: ''
 }
 
-const switchActions = (state = defaultStore, action) => {
+export default (state = defaultStore, action) => {
   let _newState = JSON.parse(JSON.stringify(state))
   switch (action.type) {
+    case REHYDRATE:
+      return { ...state, persistedState: action.payload }
     case ADD_ITEM:
       _newState.list.push(action.value)
       return _newState
@@ -21,5 +24,3 @@ const switchActions = (state = defaultStore, action) => {
       return _newState
   }
 }
-
-export default switchActions
