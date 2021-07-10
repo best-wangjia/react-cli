@@ -1,29 +1,7 @@
-# craco-react
+# react-cli
 
-使用craco配置的react快速开发模版
+### feat/craco
 
-craco+react+antd+less+axios
+### feat/webpack4
 
-### 预处理器
-
-#### Less
-
-craco-less
-
-less
-
-less-loader最高版本为7.3.0
-
-#### Sass
-
-craco-sass-resources-loader
-
-node-sass最高版本为5.0.0
-
-#### Stylus
-
-craco-stylus-loader
-
-stylus
-
-stylus-loader最高版本为3.0.2
+### feat/webpack5
