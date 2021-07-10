@@ -32,9 +32,6 @@ input[required]:invalid,input:focus:invalid,textarea[required]:invalid,textarea:
   box-shadow: none;
   -moz-box-shadow: none;
 }
-/* input[type=button],input[type=submit],input[type=file],input[type=reset],button,label{
-  @include cursor;
-} */
 input[type=button],input[type=submit],input[type=file],input[type=reset],button{
   -webkit-appearance: none;
 }

@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HardSourceWebpackPlugin =require('hard-source-webpack-plugin')
+const WebpackBar =require('webpackbar')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const resolve = dir => path.join(__dirname, dir)
@@ -10,7 +10,7 @@ const resolve = dir => path.join(__dirname, dir)
 const devMode = process.env.NODE_ENV === 'development'
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index',
   output: {
     path: resolve('../dist'),
     filename: `static/js/[name].[${devMode ? 'hash' : 'chunkhash'}:8].js`,
@@ -24,7 +24,7 @@ module.exports = {
     name: 'development-cache'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.less'],
+    extensions: ['.js', '.ts', '.jsx', '.tsx', '.less'],
     alias: {
       'src': resolve('../src'),
       'api': resolve('../src/api'),
@@ -74,6 +74,12 @@ module.exports = {
       }],
       include: [resolve('../src')]
     }, {
+      test: /\.ts[x]?$/,
+      use: [{
+        loader: 'ts-loader'
+      }],
+      include: [resolve('../src')]
+    }, {
       test: /\.less$/,
       use: [
         {
@@ -107,8 +113,7 @@ module.exports = {
         }
       ],
       include: [resolve('../src')]
-    }, 
-    {
+    }, {
       test: /\.less$/,
       use: [
         {
@@ -137,24 +142,21 @@ module.exports = {
         }
       ],
       include: /node_modules|antd\.less/
-    }, 
-    {
+    }, {
       test: /\.(png|jpg|jpeg|gif|webp)$/,
       type: 'asset/resource',
       generator: {
         filename: 'static/images/[name].[hash:8].[ext]'
       },
       exclude: /node_modules/
-    },
-    {
+    }, {
       test: /\.(svg)$/,
       type: 'asset/inline', 
       generator: {
         filename: 'static/svg/[name].[hash:8].[ext]'
       },
       exclude: /node_modules/
-    },
-    {
+    }, {
       test: /\.(eot|ttf|woff|woff2)$/,
       type: 'asset/resource',
       generator: {
@@ -185,6 +187,9 @@ module.exports = {
     //     sizeThreshold: 1024 * 1024 * 1024
     //   }
     // }),
-    new FriendlyErrorsWebpackPlugin()
+    new FriendlyErrorsWebpackPlugin(),
+    new WebpackBar({
+      color: '#00a862'
+    })
   ]
 }

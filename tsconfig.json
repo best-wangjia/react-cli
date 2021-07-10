@@ -1,7 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es2018",
+    "target": "es2019",
+    "module": "ESNext",
+    "allowJs": true,
+    "jsx": "react",
+    "noImplicitAny": true,
+    "isolatedModules": true,
+    // "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "paths": {
       "src/*" : ["./src/*"],
