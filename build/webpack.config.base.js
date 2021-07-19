@@ -83,7 +83,7 @@ module.exports = {
       test: /\.less$/,
       use: [
         {
-          loader: MiniCssExtractPlugin.loader,
+          loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
         },
         {
           loader: 'css-loader',
@@ -117,7 +117,7 @@ module.exports = {
       test: /\.less$/,
       use: [
         {
-          loader: MiniCssExtractPlugin.loader,
+          loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
         },
         {
           loader: 'css-loader',

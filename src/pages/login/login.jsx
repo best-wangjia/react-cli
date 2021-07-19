@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Form, Input, Button, Checkbox } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
-import './login.module.less'
+import styles from './login.module'
 
 export default class Login extends Component {
   onFinish(value) {
@@ -10,8 +10,8 @@ export default class Login extends Component {
   }
   render() {
     return (
-      <div className="container">
-        <div className="box">
+      <div className={styles.container}>
+        <div className={styles.box}>
           <Form name="login" initialValues={{remember: true}}
             className="login-form"
             onFinish={this.onFinish}>
