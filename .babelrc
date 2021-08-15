@@ -3,13 +3,12 @@
     [
       "@babel/preset-env",
       {
-        "useBuiltIns": "usage",
-        // "debug": true,
-        "corejs": "3.0"
+        "useBuiltIns": "entry",
+        "modules": false,
+        "corejs": 3
       }
     ],
-    "@babel/preset-react",
-    "@babel/preset-typescript"
+    "@babel/preset-react"
   ],
   "plugins": [
     "@babel/plugin-transform-runtime",
@@ -27,13 +26,17 @@
       }
     ],
     [
+      "@babel/plugin-proposal-private-methods",
+      {
+        "loose": true
+      }
+    ],
+    [
       "import",
       {
-        "libraryName": "antd",
-        "libraryDirectory": "es",
+        "libraryName": "zarm",
         "style": true
-      },
-      "antd"
+      }
     ]
   ]
 }

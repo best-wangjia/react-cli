@@ -24,7 +24,7 @@ module.exports = {
     name: 'development-cache'
   },
   resolve: {
-    extensions: ['.js', '.ts', '.jsx', '.tsx', '.less'],
+    extensions: ['.js', '.jsx', '.scss'],
     alias: {
       'src': resolve('../src'),
       'api': resolve('../src/api'),
@@ -71,16 +71,12 @@ module.exports = {
       test: /\.js[x]?$/,
       use: [{
         loader: 'babel-loader'
+      }, {
+        loader: 'eslint-loader'
       }],
       include: [resolve('../src')]
     }, {
-      test: /\.ts[x]?$/,
-      use: [{
-        loader: 'ts-loader'
-      }],
-      include: [resolve('../src')]
-    }, {
-      test: /\.less$/,
+      test: /\.scss$/,
       use: [
         {
           loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -104,9 +100,9 @@ module.exports = {
           }
         },
         {
-          loader: 'less-loader',
+          loader: 'sass-loader',
           options: {
-            lessOptions: {
+            sassOptions: {
               javascriptEnabled: true
             }
           }
@@ -114,7 +110,7 @@ module.exports = {
       ],
       include: [resolve('../src')]
     }, {
-      test: /\.less$/,
+      test: /\.scss$/,
       use: [
         {
           loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -133,15 +129,32 @@ module.exports = {
           }
         },
         {
-          loader: 'less-loader',
+          loader: 'sass-loader',
           options: {
-            lessOptions: {
+            sassOptions: {
               javascriptEnabled: true
             }
           }
         }
       ],
-      include: /node_modules|antd\.less/
+      include: /node_modules|zarm\.scss/
+    }, {
+      test: /\.css$/,
+      use: [
+        {
+          loader: MiniCssExtractPlugin.loader,
+        },
+        {
+          loader: 'css-loader',
+        },
+        // {
+        //   loader: 'postcss-loader',
+        //   options: {
+        //     sourceMap: true
+        //   }
+        // }
+      ],
+      // include: ['/node_modules|zarm\.css/', '/node_modules|normalize\.css/']
     }, {
       test: /\.(png|jpg|jpeg|gif|webp)$/,
       type: 'asset/resource',

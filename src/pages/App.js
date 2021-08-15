@@ -1,8 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
-import { Button, message } from 'antd'
+import { Button } from 'zarm'
 import { connect } from 'react-redux'
-import { useHistory } from 'react-router'
 import Login from './login/login'
 
 const Comp1 = () => {
@@ -16,7 +15,7 @@ const Comp2 = () => {
 const App = (props) => {
   function btnClick() {
     // props.addItem()
-    message.info('NODE_ENV: ' + ENV)
+    console.log('NODE_ENV: ' + ENV)
   }
   
   return (
@@ -27,7 +26,7 @@ const App = (props) => {
           <li><Link to="/comp2">comp2</Link></li>
           <li><Link to="/login">login</Link></li>
           <li>
-            <Button type="primary" onClick={btnClick}>Click</Button>
+            <Button theme="primary" onClick={btnClick}>Click</Button>
           </li>
           {
             props.list.map((v, i) => <li key={i}>{v}</li>)

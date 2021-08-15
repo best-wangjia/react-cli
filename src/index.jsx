@@ -1,17 +1,22 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { store, persistor } from './store'
 import { PersistGate } from 'redux-persist/integration/react'
+import { ConfigProvider } from 'zarm'
 import App from 'pages/App'
-import 'common/style/base.less'
+import zhCN from 'zarm/lib/config-provider/locale/zh_CN'
+import 'zarm/dist/zarm.css'
+import 'common/style/base'
 
 const Root = () => {
   return (
     <React.StrictMode>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <App />
+          <ConfigProvider locale={{zhCN}} primaryColor="#039be5">
+            <App />
+          </ConfigProvider>
         </PersistGate>
       </Provider>
     </React.StrictMode>
