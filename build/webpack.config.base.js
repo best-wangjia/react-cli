@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WebpackBar =require('webpackbar')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const pxtovw = require('postcss-px-to-viewport')
 
 const resolve = dir => path.join(__dirname, dir)
 
@@ -83,18 +84,35 @@ module.exports = {
         },
         {
           loader: 'css-loader',
-          options: {
-            sourceMap: true,
-            importLoaders: 2,
-            modules: true
-          }
+          // options: {
+          //   sourceMap: true,
+          //   importLoaders: 2,
+          //   modules: true
+          // }
         },
         {
           loader: 'postcss-loader',
           options: {
             plugins: function() {
               return [
-                require('autoprefixer')()
+                require('autoprefixer')(),
+                pxtovw({
+                  unitToConvert: 'px',
+                  viewportWidth: 375,
+                  viewportHeight: 667,
+                  unitPrecision: 3,
+                  propList: ['*'],
+                  viewportUnit: 'vw',
+                  fontViewportUnit: 'vw',
+                  selectBlackList: [],
+                  minPixelValue: 1,
+                  mediaQuery: true,
+                  replace: true,
+                  exclude: [/node_modules/],
+                  landscape: false,
+                  landscapeUnit: 'vw',
+                  landscapeWidth: 667
+                })
               ]
             }
           }
@@ -113,24 +131,15 @@ module.exports = {
       test: /\.scss$/,
       use: [
         {
-          loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          loader: 'style-loader'
         },
         {
-          loader: 'css-loader',
-        },
-        {
-          loader: 'postcss-loader',
-          options: {
-            plugins: function() {
-              return [
-                require('autoprefixer')()
-              ]
-            }
-          }
+          loader: 'css-loader'
         },
         {
           loader: 'sass-loader',
           options: {
+            implementation: require('dart-sass'),
             sassOptions: {
               javascriptEnabled: true
             }
@@ -201,8 +210,6 @@ module.exports = {
     //   }
     // }),
     new FriendlyErrorsWebpackPlugin(),
-    new WebpackBar({
-      color: '#00a862'
-    })
+    new WebpackBar()
   ]
 }

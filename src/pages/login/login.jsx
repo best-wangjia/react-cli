@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import styles from './login.module'
+import './login.scss'
 
 export default class Login extends Component {
   render() {
     return (
-      <div className={styles.container}>
-        <div className={styles.box}>
+      <div className="login">
+        <div className="box">
           login box
         </div>
       </div>

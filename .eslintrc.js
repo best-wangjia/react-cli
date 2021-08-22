@@ -26,7 +26,7 @@ module.exports = {
     "linebreak-style": [0, "error", "windows"],
     "no-unused-vars": "off", // 禁止未使用过的变量
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off", //生产环境禁用 debugger
-    "no-console": process.env.NODE_ENV === "production" ? "error" : "off", //生产环境禁用 console
+    "no-console": "off", //生产环境禁用 console
     "default-case": ["warn", { commentPattern: "^no default$" }], //要求 Switch 语句中有 Default
     "dot-location": ["warn", "property"], // 强制在点号之前或之后换行
     eqeqeq: ["error", "allow-null"], //要求使用 === 和 !==
