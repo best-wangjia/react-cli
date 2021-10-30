@@ -74,12 +74,6 @@ module.exports = {
       }],
       include: [resolve('../src')]
     }, {
-      test: /\.ts[x]?$/,
-      use: [{
-        loader: 'ts-loader'
-      }],
-      include: [resolve('../src')]
-    }, {
       test: /\.less$/,
       use: [
         {
