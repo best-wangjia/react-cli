@@ -199,7 +199,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: `static/css/[name].[${devMode ? 'hash' : 'contenthash'}:8].css`
     }),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.IgnorePlugin({
+      resourceRegExp: /^\.\/locale$/,
+      contextRegExp: /moment$/
+    }),
     new webpack.DefinePlugin({
       ENV: JSON.stringify(process.env.NODE_ENV)
     }),

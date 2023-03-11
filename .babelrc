@@ -40,8 +40,9 @@
     [
       "import",
       {
-        "libraryName": "zarm",
-        "style": true
+        "libraryName": "antd-mobile",
+        "libraryDirectory": "es/components",
+        "style": false
       }
     ]
   ]

@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const webpackMerge = require('webpack-merge')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const baseWebpackConfig = require('./webpack.config.base')
@@ -13,9 +13,13 @@ const config = webpackMerge.merge(baseWebpackConfig, {
   mode: 'production',
   target: 'browserslist',
   // devtool: 'cheap-module-source-map',
+  optimization: {
+    minimizer: [
+      new CssMinimizerPlugin()
+    ]
+  },
   plugins: [
     new CleanWebpackPlugin(),
-    new OptimizeCssPlugin(),
     new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
       analyzerMode: 'static',
       openAnalyzer: false,

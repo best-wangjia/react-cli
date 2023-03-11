@@ -1,0 +1,24 @@
+.detail__page{
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background-color: #f6f6f6;
+  >.detail__header{
+    height: 70px;
+    padding: 10px;
+    box-sizing: border-box;
+    >p{
+      line-height: 30px;
+      &:first-child{
+        padding-left: 10px;
+        border-left: 3px solid #039be5;
+      }
+    }
+  }
+  >.detail__box{
+    >.detail__content{
+      padding: 10px;
+      box-sizing: border-box;
+    }
+  }
+}

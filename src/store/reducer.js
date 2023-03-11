@@ -2,7 +2,7 @@ import { REHYDRATE } from 'redux-persist/lib/constants'
 import { ADD_ITEM, DEL_ITEM, GET_INFO } from './actionTypes'
 
 let defaultStore = {
-  list: [1, 2, 3],
+  list: [],
   info: ''
 }
 
