@@ -12,7 +12,7 @@ const smp = new SpeedMeasurePlugin()
 const config = webpackMerge.merge(baseWebpackConfig, {
   mode: 'production',
   target: 'browserslist',
-  // devtool: 'cheap-module-source-map',
+  devtool: 'hidden-source-map',
   plugins: [
     new CleanWebpackPlugin(),
     new CssMinimizerPlugin(),
