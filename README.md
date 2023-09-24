@@ -1,9 +1,7 @@
 ### 本版本指定依赖包版本
 
-webpack-cli@3.3.12
+"webpack": "5.65.0",
 
-less-loader@7.3.0
+"webpack-cli": "4.10.0",
 
-autoprefixer@8.6.5
-
-postcss-loader@3.0.0
+"webpack-dev-server": "4.7.1",

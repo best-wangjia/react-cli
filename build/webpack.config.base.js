@@ -3,7 +3,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WebpackBar =require('webpackbar')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin')
 
 const resolve = dir => path.join(__dirname, dir)
 
@@ -74,68 +74,47 @@ module.exports = {
       }],
       include: [resolve('../src')]
     }, {
-      test: /\.less$/,
+      test: /\.css$/,
       use: [
         {
           loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
         },
         {
           loader: 'css-loader',
-          options: {
-            sourceMap: true,
-            importLoaders: 2,
-            modules: true
-          }
         },
         {
           loader: 'postcss-loader',
-          options: {
-            plugins: function() {
-              return [
-                require('autoprefixer')()
-              ]
-            }
-          }
-        },
-        {
-          loader: 'less-loader',
-          options: {
-            lessOptions: {
-              javascriptEnabled: true
-            }
-          }
         }
       ],
-      include: [resolve('../src')]
+      // include: [resolve('../src')]
     }, {
-      test: /\.less$/,
+      test: /\.less$/i,
       use: [
         {
           loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
         },
         {
           loader: 'css-loader',
+          // options: {
+          //   sourceMap: true,
+          //   importLoaders: 2,
+          //   modules: true
+          // }
         },
         {
           loader: 'postcss-loader',
-          options: {
-            plugins: function() {
-              return [
-                require('autoprefixer')()
-              ]
-            }
-          }
         },
         {
           loader: 'less-loader',
           options: {
             lessOptions: {
+              exclude: /node_modules/,
               javascriptEnabled: true
             }
           }
         }
       ],
-      include: /node_modules|antd\.less/
+      // include: [resolve('../src')]
     }, {
       test: /\.(png|jpg|jpeg|gif|webp)$/,
       type: 'asset/resource',

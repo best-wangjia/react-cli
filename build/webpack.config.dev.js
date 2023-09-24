@@ -5,6 +5,7 @@ const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const baseWebpackConfig = require('./webpack.config.base')
 
 const smp = new SpeedMeasurePlugin()
+const resolve = dir => path.join(__dirname, dir)
 
 const config = webpackMerge.merge(baseWebpackConfig, {
   mode: 'development',
@@ -15,20 +16,19 @@ const config = webpackMerge.merge(baseWebpackConfig, {
   ],
   devServer: {
     hot: true,
-    host: 'localhost',
+    host: '0.0.0.0',
     port: 8080,
     open: true,
-    quiet: false,
-    inline: true,
-    stats: 'errors-only',
-    overlay: false,
-    clientLogLevel: 'silent',
+    // https: true,
     compress: true,
-    publicPath: '/',
-    contentBase: path.join(__dirname, '../dist'),
-    watchContentBase: true,
-    watchOptions: {
-      ignored: '/node_modules/'
+    static: {
+      directory: path.join(__dirname, '../dist'),
+      publicPath: '/',
+    },
+    client: {
+      logging: 'info',
+      overlay: true,
+      progress: true,
     },
     proxy: {
       '/': {

@@ -1,47 +1,32 @@
 {
   "presets": [
     [
-      "@babel/preset-env",
+      "@babel/env",
       {
         "targets": {
-          "chrome": "70",
-          "firefox": "63",
-          "edge": "17",
-          "ie": "11"
-        }
+          "browsers": ["> 1%", "not dead"]
+        },
+        "useBuiltIns": "usage",
+        "corejs": 3,
+        "loose": true
       }
     ],
-    "@babel/preset-react"
+    "@babel/react"
   ],
   "plugins": [
+    "dynamic-import-node",
     "@babel/plugin-transform-runtime",
+    "@babel/plugin-transform-arrow-functions",
     "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-object-rest-spread",
     [
-      "@babel/plugin-proposal-decorators",
-      {
-        "legacy": true
-      }
+      "@babel/plugin-proposal-decorators",{"legacy": true}
     ],
     [
-      "@babel/plugin-proposal-class-properties",
-      {
-        "loose": true
-      }
+      "@babel/plugin-proposal-class-properties",{"loose": true}
     ],
     [
-      "@babel/plugin-proposal-private-methods",
-      {
-        "loose": true
-      }
-    ],
-    [
-      "import",
-      {
-        "libraryName": "antd",
-        "libraryDirectory": "es",
-        "style": true
-      },
-      "antd"
+      "@babel/plugin-proposal-private-methods",{"loose": true}
     ]
   ]
 }
