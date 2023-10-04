@@ -19,6 +19,7 @@ const App = (props) => {
           <li>
             <Button type="primary" onClick={btnClick}>Click</Button>
           </li>
+          <input type="color" />
           {/* {
             props.list.map((v, i) => <li key={i}>{v}</li>)
           } */}

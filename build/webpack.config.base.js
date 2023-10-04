@@ -5,23 +5,24 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WebpackBar =require('webpackbar')
 const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin')
 
-const resolve = dir => path.join(__dirname, dir)
+const resolve = dir => path.resolve(__dirname, dir)
 
 const devMode = process.env.NODE_ENV === 'development'
 
 module.exports = {
-  entry: './src/index',
+  entry: resolve('../src/index.jsx'),
   output: {
     path: resolve('../dist'),
-    filename: `static/js/[name].[${devMode ? 'hash' : 'chunkhash'}:8].js`,
+    filename: `static/js/[name].[chunkhash:8].js`,
+    clean: true, // webpack4需要配置clean-webpack-plugin删除dist文件，webpack5内置了。
     publicPath: '/'
   },
   cache: {
     type: 'filesystem',
-    buildDependencies: {
-      config: [__filename]
-    },
-    name: 'development-cache'
+    // buildDependencies: {
+    //   config: [__filename]
+    // },
+    // name: 'build-cache'
   },
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.less'],
@@ -37,31 +38,31 @@ module.exports = {
       'router': resolve('../src/router'),
       'hooks': resolve('../src/hooks'),
     },
-    modules: [resolve('../src'), 'node_modules']
+    modules: [resolve('../node_modules')]
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          priority: 1,
-          name: 'vendor',
-          test: /node_modules/,
-          chunks: 'initial',
-          minSize: 100,
-          minChunks: 1
-        },
-        common: {
-          chunks: 'initial',
-          name: 'common',
-          minSize: 100,
-          minChunks: 3
-        }
-      }
-    },
-    runtimeChunk: {
-      name: 'manifest'
-    }
-  },
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       vendor: {
+  //         priority: 1,
+  //         name: 'vendor',
+  //         test: /node_modules/,
+  //         chunks: 'initial',
+  //         minSize: 100,
+  //         minChunks: 1
+  //       },
+  //       common: {
+  //         chunks: 'initial',
+  //         name: 'common',
+  //         minSize: 100,
+  //         minChunks: 3
+  //       }
+  //     }
+  //   },
+  //   runtimeChunk: {
+  //     name: 'manifest'
+  //   }
+  // },
   externals: {
     // 'react': 'xxx.cdn'
   },
@@ -86,7 +87,7 @@ module.exports = {
           loader: 'postcss-loader',
         }
       ],
-      // include: [resolve('../src')]
+      include: [resolve('../src')]
     }, {
       test: /\.less$/i,
       use: [
@@ -114,7 +115,7 @@ module.exports = {
           }
         }
       ],
-      // include: [resolve('../src')]
+      include: [resolve('../src')]
     }, {
       test: /\.(png|jpg|jpeg|gif|webp)$/,
       type: 'asset/resource',
@@ -143,12 +144,10 @@ module.exports = {
       template: `./template/${devMode ? 'dev' : 'prod'}.html`,
       favicon: './public/favicon.ico',
       filename: 'index.html',
+      inject: true,
       minify: {
         collapseWhitespace: false
       }
-    }),
-    new MiniCssExtractPlugin({
-      filename: `static/css/[name].[${devMode ? 'hash' : 'contenthash'}:8].css`
     }),
     new webpack.IgnorePlugin({
       resourceRegExp: /^\.\/locale$/,

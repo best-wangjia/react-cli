@@ -5,7 +5,6 @@ const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const baseWebpackConfig = require('./webpack.config.base')
 
 const smp = new SpeedMeasurePlugin()
-const resolve = dir => path.join(__dirname, dir)
 
 const config = webpackMerge.merge(baseWebpackConfig, {
   mode: 'development',

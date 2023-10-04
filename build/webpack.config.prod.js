@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const webpackMerge = require('webpack-merge')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
@@ -14,13 +14,15 @@ const config = webpackMerge.merge(baseWebpackConfig, {
   target: 'browserslist',
   devtool: 'hidden-source-map',
   plugins: [
-    new CleanWebpackPlugin(),
-    new CssMinimizerPlugin(),
-    new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      openAnalyzer: false,
-      reportFilename: path.join(__dirname, '../analyzer/index.html')
-    })
+    new MiniCssExtractPlugin({ 
+      filename: 'static/css/[name].[contenthash:8].css'  
+    }),
+    new CssMinimizerPlugin()
+    // new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
+    //   analyzerMode: 'static',
+    //   openAnalyzer: false,
+    //   reportFilename: path.join(__dirname, '../analyzer/index.html')
+    // })
   ]
 })
 
