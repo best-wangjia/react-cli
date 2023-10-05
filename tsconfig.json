@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "allowJs": true,
+    "skipLibCheck": false,
+    "jsx": "react",
+    "noEmit": true,
+    "noImplicitAny": true,
+    "isolatedModules": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["node", "webpack-env"],
+    "baseUrl": ".",
+    "paths": {
+      "src/*" : ["./src/*"],
+      "api/*" : ["./src/api/*"],
+      "assets/*" : ["./src/assets/*"],
+      "common/*" : ["./src/common/*"],
+      "components/*" : ["./src/components/*"],
+      "pages/*" : ["./src/pages/*"],
+      "store/*" : ["./src/store/*"],
+      "utils/*" : ["./src/utils/*"],
+      "router/*" : ["./src/router/*"],
+      "hooks/*" : ["./src/hooks/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build"
+  ],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ],
+  "typeAcquisition": {
+    "exclude": [
+      "dotenv"
+    ]
+  }
+}

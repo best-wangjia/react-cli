@@ -10,7 +10,7 @@ const resolve = dir => path.resolve(__dirname, dir)
 const devMode = process.env.NODE_ENV === 'development'
 
 module.exports = {
-  entry: resolve('../src/index.jsx'),
+  entry: resolve('../src/index.tsx'),
   output: {
     path: resolve('../dist'), // 打包结果输出路径
     filename: `static/js/[name].[chunkhash:8].js`, // 每个输出js的名称 加上[chunkhash:8]
@@ -61,7 +61,7 @@ module.exports = {
   module: {
     // noParse: //,
     rules: [{
-      test: /\.js[x]?$/,
+      test: /\.ts[x]?$/,
       use: ['thread-loader', 'babel-loader'],
       include: [resolve('../src')]
     }, {
