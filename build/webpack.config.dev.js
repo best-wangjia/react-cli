@@ -1,15 +1,12 @@
 const webpack = require('webpack')
 const path = require('path')
 const webpackMerge = require('webpack-merge')
-const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const baseWebpackConfig = require('./webpack.config.base')
-
-const smp = new SpeedMeasurePlugin()
 
 const config = webpackMerge.merge(baseWebpackConfig, {
   mode: 'development',
   target: 'web',
-  devtool: 'cheap-module-source-map',
+  devtool: 'eval-cheap-module-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ],
@@ -19,8 +16,9 @@ const config = webpackMerge.merge(baseWebpackConfig, {
     port: 8080,
     open: true,
     // https: true,
-    compress: true,
-    static: {
+    compress: false, // gzip压缩，开发环境不开启，提升速度
+    // historyApiFallback: true, // 解决路由跳转404问题
+    static: { //托管静态资源文件
       directory: path.join(__dirname, '../dist'),
       publicPath: '/',
     },
@@ -47,4 +45,3 @@ const config = webpackMerge.merge(baseWebpackConfig, {
 })
 
 module.exports = config
-// module.exports = smp.wrap(config)

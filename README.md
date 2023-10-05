@@ -1,7 +1,5 @@
-### 本版本指定依赖包版本
+### 其他未使用插件
 
-"webpack": "5.65.0",
+stylelint-webpack-plugin：该插件使用 stylelint 帮助你在样式代码中避免错误并强制规范。
 
-"webpack-cli": "4.10.0",
-
-"webpack-dev-server": "4.7.1",
+@pmmmwh/react-refresh-webpack-plugin：一个实验性的Webpack插件，可用于启用“快速刷新”（也称为热重新加载），以供React组件。
