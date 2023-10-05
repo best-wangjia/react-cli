@@ -45,9 +45,9 @@ const setOpenTabs = (openTabs) => ({
   payload: openTabs
 })
 
-const setCookies = (openTabs) => ({
+const setCookies = (cookies) => ({
   type: actionType.SET_COOKIES,
-  payload: openTabs
+  payload: cookies
 })
 
 export {
