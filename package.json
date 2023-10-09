@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack serve --config=build/webpack.config.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config=build/webpack.config.prod.js",
-    "analyzer": "cross-env NODE_ENV=production webpack --config=build/webpack.config.analyzer.js"
+    "analyzer": "cross-env NODE_ENV=production webpack --config=build/webpack.config.analyzer.js",
+    "eslint": "eslint --ext .js,.tsx,.ts src",
+    "eslintfix": "eslint --fix --ext .js,.tsx,.ts src",
+    "prepare": "husky install",
+    "pre-check": "npx lint-staged",
+    "lint-staged": "lint-staged"
   },
   "keywords": [],
   "author": "jiawang",
@@ -24,6 +29,8 @@
     "@babel/preset-react": "^7.22.15",
     "@babel/runtime": "^7.22.15",
     "@babel/runtime-corejs3": "^7.22.15",
+    "@commitlint/cli": "^17.7.2",
+    "@commitlint/config-conventional": "^17.7.0",
     "@soda/friendly-errors-webpack-plugin": "^1.8.1",
     "autoprefixer": "^10.4.16",
     "babel-loader": "^9.1.3",
@@ -34,8 +41,10 @@
     "css-minimizer-webpack-plugin": "^5.0.1",
     "glob-all": "^3.3.1",
     "html-webpack-plugin": "^5.5.3",
+    "husky": "^8.0.3",
     "less": "^4.2.0",
     "less-loader": "^11.1.3",
+    "lint-staged": "^14.0.1",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss": "^8.4.30",
     "postcss-loader": "^7.3.3",
@@ -63,5 +72,20 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.less": [
+      "stylelint --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
