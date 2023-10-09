@@ -31,7 +31,7 @@ module.exports = {
   },
   resolve: {
     // extensions是webpack的resolve解析配置下的选项，在引入模块时不带文件后缀时，会来该配置数组里面依次添加后缀查找文件，所以要在extensions中配置，而第三方库里面很多引入js文件没有带后缀，所以也要配置下js
-    extensions: ['.js', '.ts', '.jsx', '.tsx', '.less'],
+    extensions: ['.js', '.jsx', '.less'],
     // 设置别名alias,设置别名可以让后续引用的地方减少路径的复杂度
     // 修改tsconfig.json,添加baseUrl和paths
     alias: {

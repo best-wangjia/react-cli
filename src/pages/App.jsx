@@ -8,7 +8,7 @@ const App = (props) => {
 
   function btnClick() {
     // props.addItem()
-    // message.info('NODE_ENV: ' + ENV)
+    message.info('NODE_ENV: ' + ENV)
   }
   
   return (
@@ -17,7 +17,7 @@ const App = (props) => {
         <ul>
           <li><Link to="/login">login</Link></li>
           <li>
-            <Button type="primary" onClick={btnClick}>Click</Button>
+            <Button type="primary" onClick={btnClick}>Click Btn</Button>
           </li>
           <input type="color" />
           {/* {
