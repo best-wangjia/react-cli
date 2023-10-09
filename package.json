@@ -7,8 +7,8 @@
     "dev": "cross-env NODE_ENV=development webpack serve --config=build/webpack.config.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config=build/webpack.config.prod.js",
     "analyzer": "cross-env NODE_ENV=production webpack --config=build/webpack.config.analyzer.js",
-    "eslint": "eslint --ext .js,.tsx,.ts src",
-    "eslintfix": "eslint --fix --ext .js,.tsx,.ts src",
+    "eslint": "eslint --ext .js,.jsx,.tsx,.ts src",
+    "eslintfix": "eslint --fix --ext .js,.jsx,.tsx,.ts src",
     "prepare": "husky install",
     "pre-check": "npx lint-staged",
     "lint-staged": "lint-staged"
