@@ -123,7 +123,7 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.(svg)$/,
-      type: 'asset/inline', 
+      type: 'asset/inline',
       parser: {
         dataUrlCondition: {
           maxSize: 10 * 1024, // 小于10kb转base64位

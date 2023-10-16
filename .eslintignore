@@ -1,0 +1,10 @@
+build
+coverage
+public
+dist
+node_modules
+config
+prettierrc
+utils
+
+.DS_Store
