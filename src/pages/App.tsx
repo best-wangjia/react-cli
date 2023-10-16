@@ -1,16 +1,16 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import { Button, message } from 'antd'
+import { Button } from 'antd'
 
 import Login from './login/login'
 
-const App = (props) => {
+const App = () => {
 
   function btnClick() {
     // props.addItem()
     // message.info('NODE_ENV: ' + ENV)
   }
-  
+
   return (
     <div className="App">
       <BrowserRouter basename="/">
