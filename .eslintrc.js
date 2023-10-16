@@ -103,4 +103,7 @@ module.exports = {
       version: 'detect',
     },
   },
+  globals: {
+    ENV: true
+  }
 }

@@ -1,23 +1,26 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import { Button } from 'antd'
+import { Button, message } from 'antd'
 
 import Login from './login/login'
 
 const App = () => {
-
   function btnClick() {
     // props.addItem()
-    // message.info('NODE_ENV: ' + ENV)
+    message.info('NODE_ENV: ' + ENV)
   }
 
   return (
     <div className="App">
       <BrowserRouter basename="/">
         <ul>
-          <li><Link to="/login">login</Link></li>
           <li>
-            <Button type="primary" onClick={btnClick}>Click</Button>
+            <Link to="/login">login</Link>
+          </li>
+          <li>
+            <Button type="primary" onClick={btnClick}>
+              Click
+            </Button>
           </li>
           <input type="color" />
           {/* {
@@ -32,6 +35,5 @@ const App = () => {
     </div>
   )
 }
-
 
 export default App
