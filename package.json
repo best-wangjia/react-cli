@@ -11,7 +11,8 @@
     "eslintfix": "eslint --fix --ext .js,.jsx,.tsx,.ts src",
     "prepare": "husky install",
     "pre-check": "npx lint-staged",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "commit": "git-cz"
   },
   "keywords": [],
   "author": "jiawang",
