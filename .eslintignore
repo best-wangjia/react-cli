@@ -8,3 +8,5 @@ prettierrc
 utils
 
 .DS_Store
+
+.eslintrc.js

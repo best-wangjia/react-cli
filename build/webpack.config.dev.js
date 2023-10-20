@@ -1,5 +1,5 @@
-const webpack = require('webpack')
 const path = require('path')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const webpackMerge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.config.base')
 
@@ -7,9 +7,7 @@ const config = webpackMerge.merge(baseWebpackConfig, {
   mode: 'development',
   target: 'web',
   devtool: 'eval-cheap-module-source-map',
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
+  plugins: [new ReactRefreshWebpackPlugin()],
   devServer: {
     hot: true,
     host: '0.0.0.0',
@@ -18,19 +16,20 @@ const config = webpackMerge.merge(baseWebpackConfig, {
     // https: true,
     compress: false, // gzip压缩，开发环境不开启，提升速度
     // historyApiFallback: true, // 解决路由跳转404问题
-    static: { //托管静态资源文件
+    static: {
+      //托管静态资源文件
       directory: path.join(__dirname, '../dist'),
-      publicPath: '/',
+      publicPath: '/'
     },
     client: {
-      logging: 'info',
+      logging: 'error',
       overlay: true,
-      progress: true,
+      progress: true
     },
     proxy: {
       '/': {
-        bypass: function(req, res, proxyOptions) {
-          return `/index.html`
+        bypass: function (req, res, proxyOptions) {
+          return '/index.html'
         }
       },
       '/api': {

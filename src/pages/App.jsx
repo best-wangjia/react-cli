@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import { Button, message } from 'antd'
 
 import Login from './login/login'
@@ -20,6 +20,9 @@ const App = () => {
             </Button>
           </li>
           <input type="color" />
+          <p>
+            <Link to="/login">Login</Link>
+          </p>
           {/* {
             props.list.map((v, i) => <li key={i}>{v}</li>)
           } */}
