@@ -1,7 +1,7 @@
 {
   "name": "webpack-react-ts",
   "version": "1.0.0",
-  "description": "",
+  "description": "React Boilerplate",
   "main": "index.tsx",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack serve --config=build/webpack.config.dev.js",
@@ -33,6 +33,7 @@
     "@babel/runtime-corejs3": "^7.22.15",
     "@commitlint/cli": "^17.8.0",
     "@commitlint/config-conventional": "^17.8.0",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
     "@soda/friendly-errors-webpack-plugin": "^1.8.1",
     "@types/react": "^18.2.25",
     "@types/react-dom": "^18.2.10",
@@ -64,6 +65,7 @@
     "postcss-loader": "^7.3.3",
     "prettier": "^3.0.3",
     "purgecss-webpack-plugin": "^5.0.0",
+    "react-refresh": "^0.14.0",
     "speed-measure-webpack-plugin": "^1.5.0",
     "style-loader": "^3.3.3",
     "terser-webpack-plugin": "^5.3.9",

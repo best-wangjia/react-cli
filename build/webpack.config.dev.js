@@ -1,5 +1,5 @@
-const webpack = require('webpack')
 const path = require('path')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const webpackMerge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.config.base')
 
@@ -8,7 +8,7 @@ const config = webpackMerge.merge(baseWebpackConfig, {
   target: 'web',
   devtool: 'eval-cheap-module-source-map',
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new ReactRefreshWebpackPlugin()
   ],
   devServer: {
     hot: true,
@@ -23,13 +23,13 @@ const config = webpackMerge.merge(baseWebpackConfig, {
       publicPath: '/',
     },
     client: {
-      logging: 'info',
+      logging: 'error',
       overlay: true,
       progress: true,
     },
     proxy: {
       '/': {
-        bypass: function(req, res, proxyOptions) {
+        bypass: function (req, res, proxyOptions) {
           return `/index.html`
         }
       },

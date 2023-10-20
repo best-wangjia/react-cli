@@ -9,14 +9,3 @@ root.render(
     <App />
   </React.StrictMode>
 )
-
-if (module && module.hot) {
-  module.hot.accept('pages/App', () => {
-    console.log('[Webpack HMR]: Success 🎉')
-    root.render(
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    )
-  })
-}
