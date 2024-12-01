@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WebpackBar = require('webpackbar')
 const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin')
 
-const resolve = dir => path.resolve(__dirname, dir)
+const resolve = (dir) => path.resolve(__dirname, dir)
 
 const devMode = process.env.NODE_ENV === 'development'
 
@@ -23,7 +23,7 @@ module.exports = {
     // 和 chunk,改善下一次打包的构建速度,可提速 90% 左右
     // 配置好缓存后第二次打包,通过对文件做哈希对比来验证文件前后是否一致,
     // 如果一致则采用上一次的缓存,可以极大地节省时间。
-    type: 'filesystem',
+    type: 'filesystem'
     // buildDependencies: {
     //   config: [__filename]
     // },
@@ -31,20 +31,20 @@ module.exports = {
   },
   resolve: {
     // extensions是webpack的resolve解析配置下的选项，在引入模块时不带文件后缀时，会来该配置数组里面依次添加后缀查找文件，所以要在extensions中配置，而第三方库里面很多引入js文件没有带后缀，所以也要配置下js
-    extensions: ['.js', 'jsx', '.ts', '.tsx', '.less'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.less'],
     // 设置别名alias,设置别名可以让后续引用的地方减少路径的复杂度
     // 修改tsconfig.json,添加baseUrl和paths
     alias: {
-      'src': resolve('../src'),
-      'api': resolve('../src/api'),
-      'assets': resolve('../src/assets'),
-      'common': resolve('../src/common'),
-      'components': resolve('../src/components'),
-      'pages': resolve('../src/pages'),
-      'store': resolve('../src/store'),
-      'utils': resolve('../src/utils'),
-      'router': resolve('../src/router'),
-      'hooks': resolve('../src/hooks'),
+      src: resolve('../src'),
+      api: resolve('../src/api'),
+      assets: resolve('../src/assets'),
+      common: resolve('../src/common'),
+      components: resolve('../src/components'),
+      pages: resolve('../src/pages'),
+      store: resolve('../src/store'),
+      utils: resolve('../src/utils'),
+      router: resolve('../src/router'),
+      hooks: resolve('../src/hooks')
     },
     // 查找第三方模块只在本项目的node_modules中查找
     // 使用require和import引入模块时如果有准确的相对或者绝对路径,就会去按路径查询,如果引入的模块没有路径,
@@ -60,87 +60,94 @@ module.exports = {
   },
   module: {
     // noParse: //,
-    rules: [{
-      test: /\.ts[x]?$/,
-      use: ['thread-loader', 'babel-loader'],
-      include: [resolve('../src')]
-    }, {
-      // loader执行顺序是从右往左,从下往上的
-      // style-loader: 把解析后的css代码从js中抽离,放到头部的style标签中(在运行时做的)
-      // css-loader: 解析css文件代码
-      test: /\.css$/,
-      use: [
-        {
-          loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-        },
-        {
-          loader: 'css-loader',
-        },
-        {
-          loader: 'postcss-loader',
-        }
-      ],
-      include: [resolve('../src')]
-    }, {
-      test: /\.less$/i,
-      use: [
-        {
-          loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-        },
-        {
-          loader: 'css-loader',
-          // options: {
-          //   sourceMap: true,
-          //   importLoaders: 2,
-          //   modules: true
-          // }
-        },
-        {
-          loader: 'postcss-loader',
-        },
-        {
-          loader: 'less-loader',
-          options: {
-            lessOptions: {
-              exclude: /node_modules/,
-              javascriptEnabled: true
+    rules: [
+      {
+        test: /\.ts[x]?$/,
+        use: ['thread-loader', 'babel-loader'],
+        include: [resolve('../src')]
+      },
+      {
+        // loader执行顺序是从右往左,从下往上的
+        // style-loader: 把解析后的css代码从js中抽离,放到头部的style标签中(在运行时做的)
+        // css-loader: 解析css文件代码
+        test: /\.css$/,
+        use: [
+          {
+            loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader'
+          }
+        ],
+        include: [resolve('../src')]
+      },
+      {
+        test: /\.less$/i,
+        use: [
+          {
+            loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader'
+            // options: {
+            //   sourceMap: true,
+            //   importLoaders: 2,
+            //   modules: true
+            // }
+          },
+          {
+            loader: 'postcss-loader'
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                exclude: /node_modules/,
+                javascriptEnabled: true
+              }
             }
           }
-        }
-      ],
-      include: [resolve('../src')]
-    }, {
-      test: /\.(png|jpg|jpeg|gif|webp)$/,
-      type: 'asset/resource',
-      parser: {
-        dataUrlCondition: {
-          maxSize: 10 * 1024, // 小于10kb转base64位
+        ],
+        include: [resolve('../src')]
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|webp)$/,
+        type: 'asset/resource',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024 // 小于10kb转base64位
+          }
         },
-      },
-      generator: {
-        filename: 'static/images/[name].[contenthash:8].[ext]'
-      },
-      exclude: /node_modules/
-    }, {
-      test: /\.(svg)$/,
-      type: 'asset/inline',
-      parser: {
-        dataUrlCondition: {
-          maxSize: 10 * 1024, // 小于10kb转base64位
+        generator: {
+          filename: 'static/images/[name].[contenthash:8].[ext]'
         },
+        exclude: /node_modules/
       },
-      generator: {
-        filename: 'static/svg/[name].[contenthash:8].[ext]'
+      {
+        test: /\.(svg)$/,
+        type: 'asset/inline',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024 // 小于10kb转base64位
+          }
+        },
+        generator: {
+          filename: 'static/svg/[name].[contenthash:8].[ext]'
+        },
+        exclude: /node_modules/
       },
-      exclude: /node_modules/
-    }, {
-      test: /\.(eot|ttf|woff|woff2)$/,
-      type: 'asset/resource',
-      generator: {
-        filename: 'static/fonts/[name].[contenthash:8].[ext]'
-      },
-      exclude: /node_modules/
-    }]
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'static/fonts/[name].[contenthash:8].[ext]'
+        },
+        exclude: /node_modules/
+      }
+    ]
   },
   plugins: [
     // webpack需要把最终构建好的静态资源都引入到一个html文件中,这样才能在浏览器中运行,
