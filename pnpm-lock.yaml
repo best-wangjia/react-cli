@@ -3,12 +3,12 @@ lockfileVersion: 5.4
 specifiers:
   '@ant-design/icons': ^5.5.2
   '@babel/core': ^7.26.0
-  '@babel/plugin-proposal-class-properties': ^7.18.6
   '@babel/plugin-proposal-decorators': ^7.25.9
-  '@babel/plugin-proposal-object-rest-spread': ^7.20.7
-  '@babel/plugin-proposal-private-methods': ^7.18.6
   '@babel/plugin-syntax-dynamic-import': ^7.8.3
   '@babel/plugin-transform-arrow-functions': ^7.25.9
+  '@babel/plugin-transform-class-properties': ^7.25.9
+  '@babel/plugin-transform-object-rest-spread': ^7.25.9
+  '@babel/plugin-transform-private-methods': ^7.25.9
   '@babel/plugin-transform-runtime': ^7.25.9
   '@babel/preset-env': ^7.26.0
   '@babel/preset-react': ^7.25.9
@@ -23,6 +23,7 @@ specifiers:
   '@types/react': ^18.3.12
   '@types/react-dom': ^18.3.1
   '@types/react-router-dom': ^5.3.3
+  '@types/webpack': ^5.28.5
   '@typescript-eslint/eslint-plugin': ^8.16.0
   '@typescript-eslint/parser': ^8.16.0
   antd: ^5.22.2
@@ -35,6 +36,7 @@ specifiers:
   css-loader: ^7.1.2
   css-minimizer-webpack-plugin: ^7.0.0
   cz-customizable: ^7.2.1
+  dotenv-webpack: ^8.1.0
   eslint: 8.57.1
   eslint-config-prettier: ^9.1.0
   eslint-plugin-jsx-a11y: ^6.10.2
@@ -60,7 +62,7 @@ specifiers:
   style-loader: ^4.0.0
   styled-components: ^6.1.13
   terser-webpack-plugin: ^5.3.10
-  thread-loader: ^4.0.4
+  ts-loader: ^9.5.1
   typescript: ^5.7.2
   webpack: ^5.96.1
   webpack-bundle-analyzer: ^4.10.2
@@ -82,12 +84,12 @@ dependencies:
 
 devDependencies:
   '@babel/core': 7.26.0
-  '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.26.0
   '@babel/plugin-proposal-decorators': 7.25.9_@babel+core@7.26.0
-  '@babel/plugin-proposal-object-rest-spread': 7.20.7_@babel+core@7.26.0
-  '@babel/plugin-proposal-private-methods': 7.18.6_@babel+core@7.26.0
   '@babel/plugin-syntax-dynamic-import': 7.8.3_@babel+core@7.26.0
   '@babel/plugin-transform-arrow-functions': 7.25.9_@babel+core@7.26.0
+  '@babel/plugin-transform-class-properties': 7.25.9_@babel+core@7.26.0
+  '@babel/plugin-transform-object-rest-spread': 7.25.9_@babel+core@7.26.0
+  '@babel/plugin-transform-private-methods': 7.25.9_@babel+core@7.26.0
   '@babel/plugin-transform-runtime': 7.25.9_@babel+core@7.26.0
   '@babel/preset-env': 7.26.0_@babel+core@7.26.0
   '@babel/preset-react': 7.25.9_@babel+core@7.26.0
@@ -96,12 +98,13 @@ devDependencies:
   '@babel/runtime-corejs3': 7.26.0
   '@commitlint/cli': 19.6.0_iz7ekfqrhxxjkfkl635dorv6ri
   '@commitlint/config-conventional': 19.6.0
-  '@pmmmwh/react-refresh-webpack-plugin': 0.5.15_6eejssujfek3xgkfegvqhtxfra
+  '@pmmmwh/react-refresh-webpack-plugin': 0.5.15_ek6dsq2hctfz7llxc3c3q5kiui
   '@soda/friendly-errors-webpack-plugin': 1.8.1_webpack@5.96.1
   '@types/node': 22.10.1
   '@types/react': 18.3.12
   '@types/react-dom': 18.3.1
   '@types/react-router-dom': 5.3.3
+  '@types/webpack': 5.28.5_webpack-cli@5.1.4
   '@typescript-eslint/eslint-plugin': 8.16.0_eywpk5tbmzywak64ljf6vuvsay
   '@typescript-eslint/parser': 8.16.0_6txzh3afdjfsavlpa2fczfkiua
   autoprefixer: 10.4.20_postcss@8.4.49
@@ -112,6 +115,7 @@ devDependencies:
   css-loader: 7.1.2_webpack@5.96.1
   css-minimizer-webpack-plugin: 7.0.0_webpack@5.96.1
   cz-customizable: 7.2.1
+  dotenv-webpack: 8.1.0_webpack@5.96.1
   eslint: 8.57.1
   eslint-config-prettier: 9.1.0_eslint@8.57.1
   eslint-plugin-jsx-a11y: 6.10.2_eslint@8.57.1
@@ -133,7 +137,7 @@ devDependencies:
   speed-measure-webpack-plugin: 1.5.0_webpack@5.96.1
   style-loader: 4.0.0_webpack@5.96.1
   terser-webpack-plugin: 5.3.10_webpack@5.96.1
-  thread-loader: 4.0.4_webpack@5.96.1
+  ts-loader: 9.5.1_7qewn25g4gscpgqkzywpmgpbm4
   typescript: 5.7.2
   webpack: 5.96.1_webpack-cli@5.1.4
   webpack-bundle-analyzer: 4.10.2
@@ -545,20 +549,6 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/plugin-proposal-class-properties/7.18.6_@babel+core@7.26.0:
-    resolution: {integrity: sha512-cumfXOF0+nzZrrN8Rf0t7M+tF6sZc7vhQwYQck9q1/5w2OExlD+b4v4RpMJFaV1Z7WcDRgO6FqvxqxGlwo+RHQ==}
-    engines: {node: '>=6.9.0'}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties instead.
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.26.0
-      '@babel/helper-create-class-features-plugin': 7.25.9_@babel+core@7.26.0
-      '@babel/helper-plugin-utils': 7.25.9
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@babel/plugin-proposal-decorators/7.25.9_@babel+core@7.26.0:
     resolution: {integrity: sha512-smkNLL/O1ezy9Nhy4CNosc4Va+1wo5w4gzSZeLe6y6dM4mmHfYOCPolXQPHQxonZCF+ZyebxN9vqOolkYrSn5g==}
     engines: {node: '>=6.9.0'}
@@ -569,35 +559,6 @@ packages:
       '@babel/helper-create-class-features-plugin': 7.25.9_@babel+core@7.26.0
       '@babel/helper-plugin-utils': 7.25.9
       '@babel/plugin-syntax-decorators': 7.25.9_@babel+core@7.26.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /@babel/plugin-proposal-object-rest-spread/7.20.7_@babel+core@7.26.0:
-    resolution: {integrity: sha512-d2S98yCiLxDVmBmE8UjGcfPvNEUbA1U5q5WxaWFUGRzJSVAZqm5W6MbPct0jxnegUZ0niLeNX+IOzEs7wYg9Dg==}
-    engines: {node: '>=6.9.0'}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-object-rest-spread instead.
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/compat-data': 7.26.2
-      '@babel/core': 7.26.0
-      '@babel/helper-compilation-targets': 7.25.9
-      '@babel/helper-plugin-utils': 7.25.9
-      '@babel/plugin-syntax-object-rest-spread': 7.8.3_@babel+core@7.26.0
-      '@babel/plugin-transform-parameters': 7.25.9_@babel+core@7.26.0
-    dev: true
-
-  /@babel/plugin-proposal-private-methods/7.18.6_@babel+core@7.26.0:
-    resolution: {integrity: sha512-nutsvktDItsNn4rpGItSNV2sz1XwS+nfU0Rg8aCx3W3NOKVzdMjJRu0O5OkgDp3ZGICSTbgRpxZoWsxoKRvbeA==}
-    engines: {node: '>=6.9.0'}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.26.0
-      '@babel/helper-create-class-features-plugin': 7.25.9_@babel+core@7.26.0
-      '@babel/helper-plugin-utils': 7.25.9
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -653,15 +614,6 @@ packages:
   /@babel/plugin-syntax-jsx/7.25.9_@babel+core@7.26.0:
     resolution: {integrity: sha512-ld6oezHQMZsZfp6pWtbjaNDF2tiiCYYDqQszHt5VV437lewP9aSi2Of99CK0D0XB21k7FLgnLcmQKyKzynfeAA==}
     engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.26.0
-      '@babel/helper-plugin-utils': 7.25.9
-    dev: true
-
-  /@babel/plugin-syntax-object-rest-spread/7.8.3_@babel+core@7.26.0:
-    resolution: {integrity: sha512-XoqMijGZb9y3y2XskN+P1wUGiVwWZ5JmoDRwx5+3GmEplNyVM2s2Dg8ILFQm8rWM48orGy5YpI5Bl8U1y7ydlA==}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -1897,7 +1849,7 @@ packages:
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: true
 
-  /@pmmmwh/react-refresh-webpack-plugin/0.5.15_6eejssujfek3xgkfegvqhtxfra:
+  /@pmmmwh/react-refresh-webpack-plugin/0.5.15_ek6dsq2hctfz7llxc3c3q5kiui:
     resolution: {integrity: sha512-LFWllMA55pzB9D34w/wXUCf8+c+IYKuJDgxiZ3qMhl64KRMBHYM1I3VdGaD2BV5FNPV2/S2596bppxHbv2ZydQ==}
     engines: {node: '>= 10.13'}
     peerDependencies:
@@ -1923,6 +1875,7 @@ packages:
       webpack-plugin-serve:
         optional: true
     dependencies:
+      '@types/webpack': 5.28.5_webpack-cli@5.1.4
       ansi-html: 0.0.9
       core-js-pure: 3.39.0
       error-stack-parser: 2.1.4
@@ -2283,6 +2236,19 @@ packages:
   /@types/stylis/4.2.5:
     resolution: {integrity: sha512-1Xve+NMN7FWjY14vLoY5tL3BVEQ/n42YLwaqJIPYhotZ9uBHt87VceMwWQpzmdEt2TNXIorIFG+YeCUUW7RInw==}
     dev: false
+
+  /@types/webpack/5.28.5_webpack-cli@5.1.4:
+    resolution: {integrity: sha512-wR87cgvxj3p6D0Crt1r5avwqffqPXUkNlnQ1mjU93G7gCuFjufZR4I6j8cz5g1F1tTYpfOOFvly+cmIQwL9wvw==}
+    dependencies:
+      '@types/node': 22.10.1
+      tapable: 2.2.1
+      webpack: 5.96.1_webpack-cli@5.1.4
+    transitivePeerDependencies:
+      - '@swc/core'
+      - esbuild
+      - uglify-js
+      - webpack-cli
+    dev: true
 
   /@types/ws/8.5.13:
     resolution: {integrity: sha512-osM/gWBTPKgHV8XkTunnegTRIsvF6owmf5w+JtAfOw472dptdm0dlGv4xCt6GwQRcC2XVOvvRE/0bAoQcL2QkA==}
@@ -3948,6 +3914,27 @@ packages:
       is-obj: 2.0.0
     dev: true
 
+  /dotenv-defaults/2.0.2:
+    resolution: {integrity: sha512-iOIzovWfsUHU91L5i8bJce3NYK5JXeAwH50Jh6+ARUdLiiGlYWfGw6UkzsYqaXZH/hjE/eCd/PlfM/qqyK0AMg==}
+    dependencies:
+      dotenv: 8.6.0
+    dev: true
+
+  /dotenv-webpack/8.1.0_webpack@5.96.1:
+    resolution: {integrity: sha512-owK1JcsPkIobeqjVrk6h7jPED/W6ZpdFsMPR+5ursB7/SdgDyO+VzAU+szK8C8u3qUhtENyYnj8eyXMR5kkGag==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      webpack: ^4 || ^5
+    dependencies:
+      dotenv-defaults: 2.0.2
+      webpack: 5.96.1_webpack-cli@5.1.4
+    dev: true
+
+  /dotenv/8.6.0:
+    resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
+    engines: {node: '>=10'}
+    dev: true
+
   /duplexer/0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
     dev: true
@@ -5514,10 +5501,6 @@ packages:
 
   /json-buffer/3.0.1:
     resolution: {integrity: sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==}
-    dev: true
-
-  /json-parse-better-errors/1.0.2:
-    resolution: {integrity: sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==}
     dev: true
 
   /json-parse-even-better-errors/2.3.1:
@@ -8330,19 +8313,6 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /thread-loader/4.0.4_webpack@5.96.1:
-    resolution: {integrity: sha512-tXagu6Hivd03wB2tiS1bqvw345sc7mKei32EgpYpq31ZLes9FN0mEK2nKzXLRFgwt3PsBB0E/MZDp159rDoqwg==}
-    engines: {node: '>= 16.10.0'}
-    peerDependencies:
-      webpack: ^5.0.0
-    dependencies:
-      json-parse-better-errors: 1.0.2
-      loader-runner: 4.3.0
-      neo-async: 2.6.2
-      schema-utils: 4.2.0
-      webpack: 5.96.1_webpack-cli@5.1.4
-    dev: true
-
   /throttle-debounce/5.0.2:
     resolution: {integrity: sha512-B71/4oyj61iNH0KeCamLuE2rmKuTO5byTOSVwECM5FA7TiAiAW+UqTKZ9ERueC4qvgSttUhdmq1mXC3kJqGX7A==}
     engines: {node: '>=12.22'}
@@ -8404,6 +8374,22 @@ packages:
       typescript: '>=4.2.0'
     dependencies:
       typescript: 5.7.2
+    dev: true
+
+  /ts-loader/9.5.1_7qewn25g4gscpgqkzywpmgpbm4:
+    resolution: {integrity: sha512-rNH3sK9kGZcH9dYzC7CewQm4NtxJTjSEVRJ2DyBZR7f8/wcta+iV44UPCXc5+nzDzivKtlzV6c9P4e+oFhDLYg==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      typescript: '*'
+      webpack: ^5.0.0
+    dependencies:
+      chalk: 4.1.2
+      enhanced-resolve: 5.17.1
+      micromatch: 4.0.8
+      semver: 7.6.3
+      source-map: 0.7.4
+      typescript: 5.7.2
+      webpack: 5.96.1_webpack-cli@5.1.4
     dev: true
 
   /tslib/1.14.1:

@@ -14,7 +14,6 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
   rules: {
     '@typescript-eslint/no-var-requires': 0,
-    '@typescript-eslint/ban-ts-comment': 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn', // 以上两行是精华，必须添加，使用钩子函数时才会提示警告/错误
     'prettier/prettier': 2,
