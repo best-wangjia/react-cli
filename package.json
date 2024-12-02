@@ -7,8 +7,8 @@
     "dev": "cross-env NODE_ENV=development webpack serve --config=build/webpack.config.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config=build/webpack.config.prod.js",
     "analyzer": "cross-env NODE_ENV=production webpack --config=build/webpack.config.analyzer.js",
-    "eslint": "eslint --ext .js,.jsx,.tsx,.ts src",
-    "eslintfix": "eslint --fix --ext .js,.jsx,.tsx,.ts src",
+    "eslint": "eslint './**/*.{ts,tsx,js,jsx}'",
+    "eslintfix": "eslint --fix './**/*.{ts,tsx,js,jsx}'",
     "prepare": "husky install",
     "pre-check": "npx lint-staged",
     "lint-staged": "lint-staged",
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
+    "@babel/eslint-parser": "^7.25.9",
     "@babel/plugin-proposal-decorators": "^7.25.9",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-arrow-functions": "^7.25.9",
@@ -43,8 +44,10 @@
     "@babel/runtime-corejs3": "^7.26.0",
     "@commitlint/cli": "^19.6.0",
     "@commitlint/config-conventional": "^19.6.0",
+    "@eslint/js": "^9.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
     "@soda/friendly-errors-webpack-plugin": "^1.8.1",
+    "@types/eslint": "^9.6.1",
     "@types/node": "^22.10.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
@@ -61,13 +64,14 @@
     "css-minimizer-webpack-plugin": "^7.0.0",
     "cz-customizable": "^7.2.1",
     "dotenv-webpack": "^8.1.0",
-    "eslint": "8.57.1",
+    "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
     "glob-all": "^3.3.1",
+    "globals": "^15.13.0",
     "html-webpack-plugin": "^5.6.3",
     "husky": "^9.1.7",
     "less": "^4.2.1",
@@ -84,6 +88,7 @@
     "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "^9.5.1",
     "typescript": "^5.7.2",
+    "typescript-eslint": "^8.16.0",
     "webpack": "^5.96.1",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.1.4",
@@ -92,7 +97,7 @@
     "webpackbar": "^7.0.0"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=17.0.0"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [

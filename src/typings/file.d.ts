@@ -1,3 +1,13 @@
+declare module '*.ts' {
+  const path: any
+  export default path
+}
+
+declare module '*.tsx' {
+  const path: any
+  export default path
+}
+
 declare module '*.css' {
   const style: any
   export default style

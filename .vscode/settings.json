@@ -9,8 +9,20 @@
     "source.fixAll": "explicit",
     "eslint.autoFixOnSave": "explicit"
   },
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "eslint.codeAction.showDocumentation": { "enable": true },
   "eslint.format.enable": true,
-  "eslint.probe": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"]
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ],
+  "eslint.experimental.useFlatConfig": true
 }

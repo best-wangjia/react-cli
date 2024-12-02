@@ -64,7 +64,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts[x]?$/,
-        use: ['babel-loader'],
+        use: ['babel-loader', 'ts-loader'],
         include: [resolve('../src')],
       },
       {

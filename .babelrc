@@ -13,8 +13,8 @@
         "loose": true
       }
     ],
-    "@babel/preset-react",
-    "@babel/preset-typescript"
+    "@babel/preset-typescript",
+    "@babel/preset-react"
   ],
   "plugins": [
     "dynamic-import-node",
