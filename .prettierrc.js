@@ -1,5 +1,5 @@
 module.exports = {
-  printWidth: 80, // 一行的字符数，如果超过会进行换行
+  printWidth: 120, // 一行的字符数，如果超过会进行换行
   tabWidth: 2, // 一个tab代表几个空格数，默认就是2
   tabSize: 2,
   useTabs: false, // 是否启用tab取代空格符缩进，.editorconfig设置空格缩进，所以设置为false
@@ -16,5 +16,5 @@ module.exports = {
   proseWrap: 'preserve', // 按照文件原样折行
   htmlWhitespaceSensitivity: 'ignore', //对HTML全局空白不敏感
   endOfLine: 'lf', //结束行形式
-  embeddedLanguageFormatting: 'auto' //对引用代码进行格式化
+  embeddedLanguageFormatting: 'auto', //对引用代码进行格式化
 }

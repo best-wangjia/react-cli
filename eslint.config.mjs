@@ -25,7 +25,22 @@ const customTSFlatConfig = [
     files: ['**/*.{ts,tsx}'],
     rules: {
       ...tsESLintPlugin.configs.recommended.rules,
-      // '@typescript-eslint/ban-types': 2,
+      // '@typescript-eslint/ban-types': [
+      //   'error',
+      //   {
+      //     types: {
+      //       String: false,
+      //       Boolean: false,
+      //       Number: false,
+      //       Symbol: false,
+      //       '{}': false,
+      //       Object: false,
+      //       object: false,
+      //       Function: false,
+      //     },
+      //     extendDefaults: true,
+      //   },
+      // ],
       '@typescript-eslint/no-confusing-non-null-assertion': 2,
     },
     plugins: {
